@@ -5,10 +5,16 @@ const app = express();
 
 // MySQL connection configuration
 const connection = mysql.createConnection({
-    host: '127.0.0.1',
-    user: 'root',
-    password: '',
-    database: 'hotelw'
+    //This is all for Localhost connection to the database
+    //host: '127.0.0.1',
+    //user: 'root',
+    //password: '',
+    //database: 'hotelw'
+    host:'db4free.net',
+    user:'hotelw1',
+    password:'Weixiya2926!',
+    database:'hotelw1',
+
 });
 
 // Connect to MySQL database
