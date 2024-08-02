@@ -11,7 +11,7 @@ const connection = mysql.createConnection({
     //password: '',
     //database: 'hotelw'
     host:'db4free.net',
-    user:'hotelw1',
+    user:'sohchoonhwe',
     password:'Weixiya2926!',
     database:'hotelw1',
 
