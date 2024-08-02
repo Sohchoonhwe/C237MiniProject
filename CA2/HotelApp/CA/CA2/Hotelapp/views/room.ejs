@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= room.RoomTypeName %> Details</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        .card-img-top {
+            object-fit: cover;
+            width: 100%;
+            height: 400px;
+        }
+        /* styles.css */
+
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f8f9fa; /* Light grey background */
+}
+
+.container {
+    max-width: 900px;
+}
+
+/* Center and underline <h2> headings */
+h2 {
+    text-align: center; /* Center align */
+    border-bottom: 2px solid #007bff; /* Underline with blue color */
+    padding-bottom: 0.5rem; /* Space between text and underline */
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+    margin-top: 20px;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+    height: 400px; /* Adjusted height of the card image */
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card-body {
+    padding: 1.5rem; /* Increased padding for better spacing */
+}
+
+.card-title {
+    font-size: 2rem; /* Larger font size for card title */
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.card-text {
+    font-size: 1.2rem; /* Larger font size for card text */
+    margin-bottom: 1rem;
+}
+
+.btn {
+    font-size: 1rem; /* Increased font size for buttons */
+    padding: 0.5rem 1rem; /* Increased padding for buttons */
+    margin-right: 0.5rem;
+}
+
+.btn-success {
+    background-color: #28a745; /* Green */
+    border-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838; /* Darker green on hover */
+    border-color: #218838;
+}
+
+.btn-secondary {
+    background-color: #6c757d; /* Grey */
+    border-color: #6c757d;
+    color: #fff; /* White text */
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268; /* Darker grey on hover */
+    border-color: #545b62;
+}
+
+footer {
+    background-color: #f8f9fa; /* Light grey background */
+    color: #6c757d; /* Medium grey text */
+    text-align: center;
+    padding: 1.5rem; /* Increased padding for footer */
+    margin-top: 2rem;
+    border-top: 1px solid #dee2e6; /* Light grey border on top */
+}
+
+    </style>
+</head>
+<body>
+<%- include('partials/navbar.ejs') %>
+    <div class="container mt-4">
+        <h2><%= room.RoomTypeName %> Details</h2>
+        <div class="card">
+            <img src="<%= room.Image %>" class="card-img-top" alt="Image of <%= room.RoomTypeName %>">
+            <div class="card-body">
+                <h5 class="card-title"><%= room.RoomTypeName %></h5>
+                <p class="card-text"><strong>Quantity:</strong> <%= room.RoomQuantity %></p>
+                <p class="card-text"><strong>Price per Night:</strong> $<%= room.PricePerNight %></p>
+                <p class="card-text"><strong>Description:</strong> <%= room.Description %></p>
+                <a href="/room/<%= room.RoomID %>/book" class="btn btn-success">Book Now</a>
+                <a href="/" class="btn btn-secondary">Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

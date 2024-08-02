@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Edit</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            width: 100%;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <%- include('partials/navbar.ejs') %>
+    <br>
+    <h1>Edit <%= staff.StaffName %>'s Information</h1>
+    <form action="/staff/<%= staff.StaffID %>/edit" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="<%= staff.StaffName %>" required>
+        
+        <label for="position">Position:</label>
+        <input type="text" id="position" name="position" value="<%= staff.StaffPosition %>" required>
+        
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="phone" value="<%= staff.StaffPhoneNumber %>" required>
+
+        <label for="department">Department:</label>
+        <select id="department" name="department">
+            <option value="Housekeeping" <%= staff.StaffDepartment === 'Housekeeping' ? 'selected' : '' %>>Housekeeping</option>
+            <option value="Reception" <%= staff.StaffDepartment === 'Reception' ? 'selected' : '' %>>Reception</option>
+            <option value="Maintenance" <%= staff.StaffDepartment === 'Maintenance' ? 'selected' : '' %>>Maintenance</option>
+            <option value="Kitchen" <%= staff.StaffDepartment === 'Kitchen' ? 'selected' : '' %>>Kitchen</option>
+            <option value="Management" <%= staff.StaffDepartment === 'Management' ? 'selected' : '' %>>Management</option>
+        </select>
+        
+        <button type="submit">Update Staff</button>
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

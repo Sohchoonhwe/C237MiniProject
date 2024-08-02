@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Management</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #343a40;
+        }
+        .table {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .table th, .table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+        .table th {
+            background-color: #007bff;
+            color: white;
+        }
+        .table-hover tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+        .btn-action {
+            width: 60px;
+            margin-right: 5px;
+        }
+        .btn-edit {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+        .btn-edit:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+        .btn-delete {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+        .btn-delete:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+        .btn-add {
+            display: block;
+            width: 150px;
+            margin: 0 auto;
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-add:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <%- include('partials/navbar.ejs') %>
+    <main class="container mt-4">
+        <h2>Staff Management</h2>
+        <form class="form-inline my-2 my-lg-0" method="GET" action="/staff/search">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search Staff" aria-label="Search" name="query">
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+        </form>    
+        <table class="table table-bordered table-hover mt-3">
+            <thead>
+                <tr>
+                    <th>Staff ID</th>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Phone Number</th>
+                    <th>Department</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% staff.forEach(member => { %>
+                    <tr>
+                        <td><%= member.StaffID %></td>
+                        <td><%= member.StaffName %></td>
+                        <td><%= member.StaffPosition %></td>
+                        <td><%= member.StaffPhoneNumber %></td>
+                        <td><%= member.StaffDepartment %></td>
+                        <td>
+                            <a href="/staff/<%= member.StaffID %>/edit" class="btn btn-primary btn-sm btn-action btn-edit">Edit</a>
+                            <a href="/staff/<%= member.StaffID %>/delete" class="btn btn-danger btn-sm btn-action btn-delete">Delete</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        <a href="/addstaff" class="btn btn-primary btn-add mt-3">Add New Staff</a>
+    </main>
+</body>
+</html>
